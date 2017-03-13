@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import {Headers} from '@angular/http';
+import {Http, Response, Headers} from '@angular/http';
 @Injectable()
 export class TaskListService {
 

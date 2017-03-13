@@ -20,13 +20,18 @@ export class AppComponent implements OnInit {
 
 
     ngOnInit() {
-        this.getTasksLists();
+        this.taskListService.getTaskLists() .subscribe((data) => {
+            this.taskLists = data.json();
+            this.currentTaskList = this.taskLists[0];
+            this.changeTab(this.currentTaskList);
+        });
     }
 
     public getTasksLists = () => {
-            this.taskListService.getTaskLists() .subscribe((data) => {
-                this.taskLists = data.json();
-            });
+        this.taskListService.getTaskLists() .subscribe((data) => {
+            this.taskLists = data.json();
+            this.changeTab(this.currentTaskList);
+        });
 
     };
 
@@ -53,19 +58,18 @@ export class AppComponent implements OnInit {
                 is_checked: 0,
                 tab_id: this.currentTaskList.id
             };
+            this.newTaskText = '';
+            this.tasks.push(task);
             this.taskListService.createTask(task, this.currentTaskList.id)
-                .subscribe(() => {
-                    this.getTasksLists();
-                    this.changeTab(this.currentTaskList);
-                });
-
+                .subscribe(data => this.getTasksLists(),
+                    error => this.getTasksLists()
+                );
         }
     }
 
     public removeTask(task) {
         this.taskListService.removeTask(task.id) .subscribe(() => {
             this.getTasksLists();
-            this.changeTab(this.currentTaskList);
         });
 
     }
@@ -73,8 +77,10 @@ export class AppComponent implements OnInit {
     public createNewTaskList() {
         this.taskListService.createTaskList(this.newTaskListText)
             .subscribe(() => {
+                this.newTaskListText = '';
                 this.ngOnInit();
             });
+
 
     }
 
