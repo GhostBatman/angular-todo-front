@@ -54,9 +54,9 @@ export class AppComponent implements OnInit {
     public createNewTask() {
         if (this.newTaskText) {
             let task = {
-                taskText: this.newTaskText,
+                task_text: this.newTaskText,
                 is_checked: 0,
-                tab_id: this.currentTaskList.id
+                task_list_id: this.currentTaskList.id
             };
             this.newTaskText = '';
             this.tasks.push(task);
