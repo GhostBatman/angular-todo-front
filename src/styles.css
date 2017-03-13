@@ -1,1 +1,30 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.header-custom {
+    background-color: rgb(41, 58, 72);
+    color: white;
+    margin-top: 0px;
+    font-size: 32px;
+    font-family: "Roboto", "sans-serif";
+    border-radius: 2px;
+    padding: 10px;
+
+}
+
+.panel-default {
+    border: none;
+}
+
+.panel-default > .panel-heading {
+    background-color: #f44336;
+    color: white;
+
+}
+
+.list-group-item {
+    background-color: rgb(41, 58, 72);
+    color: white;
+    font-family: "Roboto", "sans-serif";
+    margin-top: 0px;
+}
