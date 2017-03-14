@@ -13,7 +13,8 @@ export class AppComponent implements OnInit {
     title: any;
     newTaskText: string;
     currentTaskList: any;
-    newTaskListText: string;
+    newTaskListText: string = '';
+    newTaskListName: string;
 
     constructor(private taskListService: TaskService) {
     }
@@ -37,9 +38,12 @@ export class AppComponent implements OnInit {
 
     public changeTab = (taskList) => {
         this.taskListService.getTasks(taskList.id) .subscribe((data) => {
+            this.currentTaskList.className = '';
             this.currentTaskList = taskList;
             this.tasks = data.json();
             this.title = taskList.name;
+            this.newTaskListName = this.currentTaskList.name;
+            this.currentTaskList.className = 'current-nav-bar-item';
         });
     };
 
@@ -75,14 +79,23 @@ export class AppComponent implements OnInit {
     }
 
     public createNewTaskList() {
-        this.taskListService.createTaskList(this.newTaskListText)
-            .subscribe(() => {
-                this.newTaskListText = '';
-                this.ngOnInit();
-            });
+        if (this.newTaskListText.trim()) {
+            this.taskListService.createTaskList(this.newTaskListText)
+                .subscribe(() => {
+                    this.newTaskListText = '';
+                    this.ngOnInit();
+                });
+        }
 
 
     }
 
-
+    public renameTaskList() {
+        this.currentTaskList.name = this.newTaskListName;
+        this.taskListService.updateTaskList(this.currentTaskList)
+            .subscribe(() => {
+                this.newTaskListName = '';
+                this.getTasksLists();
+            });
+    }
 }

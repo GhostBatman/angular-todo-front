@@ -32,4 +32,9 @@ export class TaskListService {
     removeTask(id: number) {
         return this.http.delete('http://loc.todo.kg/api/v1/tasks/' + id);
     }
+
+    updateTaskList(taskList: any) {
+        let headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
+        return this.http.put('http://loc.todo.kg/api/v1/tasks/' + taskList.id, JSON.stringify(taskList), {headers: headers})
+    }
 }

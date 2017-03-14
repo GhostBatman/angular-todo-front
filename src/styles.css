@@ -39,11 +39,19 @@ html body {
 }
 
 .custom-checkbox {
-    width: 2%;
+    width: 20px;
+   vertical-align: middle!important;
 }
 
 .left-nav-bar-item:hover{
     cursor: pointer;
     background-color: rgba(41, 58, 72, 0.73);
+}
 
+.current-nav-bar-item{
+    background-color: rgba(41, 58, 72, 0.73);
+}
+
+.edit-task-list-name:hover{
+    cursor: pointer;
 }
