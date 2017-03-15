@@ -4,6 +4,7 @@
 html body {
     font-family: "Roboto", "sans-serif";
 }
+
 .header-custom {
     background-color: rgb(41, 58, 72);
     color: white;
@@ -23,7 +24,7 @@ html body {
     color: white;
 }
 
-.panel-body{
+.panel-body {
     padding: 15px 0px;
 }
 
@@ -39,19 +40,23 @@ html body {
 }
 
 .custom-checkbox {
-    width: 20px;
-   vertical-align: middle!important;
+    width: 15px;
+    vertical-align: middle !important;
 }
 
-.left-nav-bar-item:hover{
+.left-nav-bar-item:hover {
     cursor: pointer;
     background-color: rgba(41, 58, 72, 0.73);
 }
 
-.current-nav-bar-item{
+.current-nav-bar-item {
     background-color: rgba(41, 58, 72, 0.73);
 }
 
-.edit-task-list-name:hover{
+.edit-task-list-name:hover {
     cursor: pointer;
+}
+
+.create-task-list {
+    padding-left: 0px !important;
 }

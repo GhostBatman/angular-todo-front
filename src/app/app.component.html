@@ -9,48 +9,54 @@
             {{taskList.name}}
         </div>
         <div class="list-group-item ">
-            <div class="col-xs-9">
-                <input (keydown.enter)="createNewTaskList()" type="text" placeholder="New task list"
-                       [(ngModel)]="newTaskListText" class="form-control">
+            <div class="input-group"><input (keydown.enter)="createNewTaskList()" type="text"
+                                            placeholder="New task list"
+                                            [(ngModel)]="newTaskListText" class="form-control input-group">
+                <span class="input-group-btn">
+                <input type="button" value="Add" (click)="createNewTaskList()" class="btn btn-success">
+                </span>
             </div>
-            <input type="button" value="Add" (click)="createNewTaskList()" class="btn btn-success">
         </div>
+
     </div>
 </div>
 
 <div class="col-md-9"><input type="hidden" [(ngModel)]="tasks">
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading panel-heading-custom"><h3>{{title}}</h3>
+        <div class="panel-heading panel-heading-custom">
+            <h1>
+                {{title}}
+                <small *ngIf="tasks">
+                    <a href="#" (click)="acc.toggle('2')" style="color: white; font-size: 15px">Edit</a>
+                </small>
+            </h1>
             <ngb-accordion #acc="ngbAccordion">
                 <ngb-panel id="2" title="">
                     <template ngbPanelContent>
-                        <div class="col-xs-5 create-task-form">
-                            <input (keydown.enter)="renameTaskList()" type="text" class="form-control"
+                        <div class="input-group col-xs-5">
+                            <input (keydown.enter)="renameTaskList()" type="text"
+                                   class="form-control"
                                    [(ngModel)]="newTaskListName">
+                            <span class="input-group-btn">
+                                <input type="button" class="btn btn-success" value="Save" (click)="renameTaskList()">
+                            </span>
                         </div>
-                        <div class="col-xs-7 create-task-form">
-                            <input type="button" class="btn btn-success" value="Save" (click)="renameTaskList()">
-                        </div>
+
                     </template>
                 </ngb-panel>
             </ngb-accordion>
-
-            <p>
-                <span *ngIf="tasks" class="glyphicon glyphicon-edit edit-task-list-name" (click)="acc.toggle('2')"
-                      data-toggle="tooltip" title="Rename task list"></span>
-            </p>
-
-
         </div>
         <div class="panel-body">
-            <div *ngIf="tasks" class="col-xs-9 create-task-form">
+            <div class="input-group create-task-form col-xs-9" *ngIf="tasks">
+
                 <input (keydown.enter)="createNewTask()" type="text" class="form-control"
                        placeholder="Here you can create a new task"
                        [(ngModel)]="newTaskText">
-            </div>
-            <div *ngIf="tasks" class="col-xs-3 create-task-form">
+
+                <span class="input-group-btn" *ngIf="tasks">
                 <input type="button" class="btn btn-success" value="Create task" (click)="createNewTask()">
+            </span>
             </div>
         </div>
         <table class="table table-striped">
@@ -59,11 +65,11 @@
                     <input *ngIf="!task.is_checked" type="checkbox" (change)="changeTaskCheckStatus(task)">
                     <input *ngIf="task.is_checked" type="checkbox" (change)="changeTaskCheckStatus(task)" checked>
                 </td>
-                <td>
+                <td class="col-xs-8">
                     <h4 *ngIf="!task.is_checked">{{task.task_text}}</h4>
                     <h4 *ngIf="task.is_checked" style="text-decoration: line-through">{{task.task_text}}</h4>
                 </td>
-                <td style=" vertical-align: middle; font-size: 14px">
+                <td>
                     <button (click)="removeTask(task)" class="btn btn-default" data-toggle="tooltip"
                             title="Delete task">
                         <span class="glyphicon glyphicon-trash"></span>

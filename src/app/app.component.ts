@@ -50,7 +50,6 @@ export class AppComponent implements OnInit {
     public changeTaskCheckStatus = (task) => {
         task.is_checked = !task.is_checked;
         this.taskListService.updateTask(task) .subscribe(() => {
-            this.getTasksLists();
         });
 
     };
@@ -64,16 +63,17 @@ export class AppComponent implements OnInit {
             };
             this.newTaskText = '';
             this.tasks.push(task);
+            this.currentTaskList.countTasks++;
             this.taskListService.createTask(task, this.currentTaskList.id)
-                .subscribe(data => this.getTasksLists(),
-                    error => this.getTasksLists()
+                .subscribe(data => this.changeTab(this.currentTaskList),
+                    error => this.changeTab(this.currentTaskList)
                 );
         }
     }
 
     public removeTask(task) {
         this.taskListService.removeTask(task.id) .subscribe(() => {
-            this.getTasksLists();
+            this.changeTab(this.currentTaskList)
         });
 
     }
@@ -92,10 +92,10 @@ export class AppComponent implements OnInit {
 
     public renameTaskList() {
         this.currentTaskList.name = this.newTaskListName;
+        this.title = this.newTaskListName;
         this.taskListService.updateTaskList(this.currentTaskList)
             .subscribe(() => {
                 this.newTaskListName = '';
-                this.getTasksLists();
             });
     }
 }
