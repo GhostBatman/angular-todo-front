@@ -2,10 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {TaskService} from './task.service';
 import 'rxjs/add/operator/map'
 
+
 @Component({
     selector: 'app-root',
     providers: [TaskService],
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
     taskLists: any;
@@ -15,6 +16,8 @@ export class AppComponent implements OnInit {
     currentTaskList: any;
     newTaskListText: string = '';
     newTaskListName: string;
+    taskListEditStateOff: boolean = true;
+
 
     constructor(private taskListService: TaskService) {
     }
@@ -97,5 +100,13 @@ export class AppComponent implements OnInit {
             .subscribe(() => {
                 this.newTaskListName = '';
             });
+    }
+
+    public taskListEdit(state) {
+        if (state === true) {
+            this.taskListEditStateOff = false;
+        } else {
+            this.taskListEditStateOff = true;
+        }
     }
 }

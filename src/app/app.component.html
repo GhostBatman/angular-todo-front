@@ -13,7 +13,7 @@
                                             placeholder="New task list"
                                             [(ngModel)]="newTaskListText" class="form-control input-group">
                 <span class="input-group-btn">
-                <input type="button" value="Add" (click)="createNewTaskList()" class="btn btn-success">
+                <input type="button" value="Add" (click)="createNewTaskList()" class="btn btn-default btn-custom ">
                 </span>
             </div>
         </div>
@@ -34,12 +34,12 @@
             <ngb-accordion #acc="ngbAccordion">
                 <ngb-panel id="2" title="">
                     <template ngbPanelContent>
-                        <div class="input-group col-xs-5">
+                        <div class="input-group col-xs-5"  click-outside (clickOutside)="acc.toggle('2')">
                             <input (keydown.enter)="renameTaskList()" type="text"
                                    class="form-control"
                                    [(ngModel)]="newTaskListName">
                             <span class="input-group-btn">
-                                <input type="button" class="btn btn-success" value="Save" (click)="renameTaskList()">
+                                <input type="button" class="btn btn-default btn-custom" value="Save" (click)="renameTaskList()">
                             </span>
                         </div>
 
@@ -55,7 +55,7 @@
                        [(ngModel)]="newTaskText">
 
                 <span class="input-group-btn" *ngIf="tasks">
-                <input type="button" class="btn btn-success" value="Create task" (click)="createNewTask()">
+                <input type="button" class="btn btn-default btn-custom" value="Create task" (click)="createNewTask()">
             </span>
             </div>
         </div>
@@ -72,7 +72,7 @@
                 <td>
                     <button (click)="removeTask(task)" class="btn btn-default" data-toggle="tooltip"
                             title="Delete task">
-                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="glyphicon glyphicon-trash trash"></span>
                     </button>
                 </td>
 
