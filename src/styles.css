@@ -28,7 +28,7 @@ html body {
 }
 
 .panel-body {
-    padding: 15px 0px;
+    padding-left: 8px;
 }
 
 .list-group-item {
@@ -38,9 +38,6 @@ html body {
     margin-top: 0px;
 }
 
-.create-task-form {
-    padding-left: 0px;
-}
 
 .custom-checkbox {
     width: 15px;

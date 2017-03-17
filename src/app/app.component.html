@@ -9,15 +9,14 @@
             {{taskList.name}}
         </div>
         <div class="list-group-item ">
-            <div class="input-group"><input (keydown.enter)="createNewTaskList()" type="text"
-                                            placeholder="New task list"
-                                            [(ngModel)]="newTaskListText" class="form-control input-group">
+            <div class="input-group">
+                <input (keydown.enter)="createNewTaskList()" type="text" placeholder="New task list"
+                       [(ngModel)]="newTaskListText" class="form-control input-group">
                 <span class="input-group-btn">
-                <input type="button" value="Add" (click)="createNewTaskList()" class="btn btn-default btn-custom ">
+                    <input type="button" value="Add" (click)="createNewTaskList()" class="btn btn-default btn-custom ">
                 </span>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -31,28 +30,20 @@
                     <a href="#" (click)="taskListEdit()" style="color: white; font-size: 15px">Edit</a>
                 </small>
             </h1>
-
             <div class="input-group col-xs-5" *ngIf="!taskListEditStateOff">
-                <input (keydown.enter)="renameTaskList()" type="text"
-                       class="form-control"
+                <input (keydown.enter)="renameTaskList()" type="text" class="form-control"
                        [(ngModel)]="newTaskListName">
                 <span class="input-group-btn">
-                                <input type="button" class="btn btn-default btn-custom" value="Save"
-                                       (click)="renameTaskList()">
-                      <input type="button" class="btn btn-default warn" value="Cancel"
-                             (click)="taskListEdit()">
-                            </span>
+                    <input type="button" class="btn btn-default btn-custom" value="Save" (click)="renameTaskList()">
+                    <input type="button" class="btn btn-default warn" value="Cancel" (click)="taskListEdit()">
+                </span>
             </div>
-
-
         </div>
         <div class="panel-body">
-            <div class="input-group create-task-form col-xs-9" *ngIf="tasks">
-
+            <div class="input-group col-xs-9" *ngIf="tasks">
                 <input (keydown.enter)="createNewTask()" type="text" class="form-control"
                        placeholder="Here you can create a new task"
                        [(ngModel)]="newTaskText">
-
                 <span class="input-group-btn" *ngIf="tasks">
                 <input type="button" class="btn btn-default btn-custom" value="Create task" (click)="createNewTask()">
             </span>
@@ -69,8 +60,7 @@
                     <h4 *ngIf="task.is_checked" style="text-decoration: line-through">{{task.task_text}}</h4>
                 </td>
                 <td>
-                    <button (click)="removeTask(task)" class="btn btn-default" data-toggle="tooltip"
-                            title="Delete task">
+                    <button (click)="removeTask(task)" class="btn btn-default" data-toggle="tooltip" title="Delete task">
                         <span class="glyphicon glyphicon-trash warn"></span>
                     </button>
                 </td>
@@ -78,7 +68,6 @@
             </tr>
         </table>
     </div>
-    <div></div>
 </div>
 
 
