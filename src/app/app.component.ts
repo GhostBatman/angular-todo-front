@@ -102,8 +102,8 @@ export class AppComponent implements OnInit {
             });
     }
 
-    public taskListEdit(state) {
-        if (state === true) {
+    public taskListEdit() {
+        if (this.taskListEditStateOff === true) {
             this.taskListEditStateOff = false;
         } else {
             this.taskListEditStateOff = true;
