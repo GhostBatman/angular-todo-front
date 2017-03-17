@@ -100,6 +100,7 @@ export class AppComponent implements OnInit {
             .subscribe(() => {
                 this.newTaskListName = '';
             });
+        this.taskListEdit()
     }
 
     public taskListEdit() {

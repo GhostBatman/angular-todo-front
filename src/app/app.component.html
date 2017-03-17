@@ -39,6 +39,8 @@
                 <span class="input-group-btn">
                                 <input type="button" class="btn btn-default btn-custom" value="Save"
                                        (click)="renameTaskList()">
+                      <input type="button" class="btn btn-default warn" value="Cancel"
+                             (click)="taskListEdit()">
                             </span>
             </div>
 
@@ -69,7 +71,7 @@
                 <td>
                     <button (click)="removeTask(task)" class="btn btn-default" data-toggle="tooltip"
                             title="Delete task">
-                        <span class="glyphicon glyphicon-trash trash"></span>
+                        <span class="glyphicon glyphicon-trash warn"></span>
                     </button>
                 </td>
 
