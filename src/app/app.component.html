@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="panel-body">
-            <div class="input-group col-xs-9" *ngIf="tasks">
+            <div class="input-group col-md-9" *ngIf="tasks">
                 <input (keydown.enter)="createNewTask()" type="text" class="form-control"
                        placeholder="Here you can create a new task"
                        [(ngModel)]="newTaskText">
