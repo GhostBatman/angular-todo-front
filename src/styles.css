@@ -3,7 +3,7 @@
 
 html body {
     font-family: "Roboto", "sans-serif";
-    background-color: rgba(238,238,238,0.77);
+    background-color: rgba(238, 238, 238, 0.77);
 }
 
 .header-custom {
@@ -38,7 +38,6 @@ html body {
     margin-top: 0px;
 }
 
-
 .custom-checkbox {
     width: 15px;
     vertical-align: middle !important;
@@ -61,13 +60,25 @@ html body {
     padding-left: 0px !important;
 }
 
-.btn-custom{
+.btn-custom {
     color: #4caf50;
 }
-.btn-custom:hover{
+
+.btn-custom:hover {
     color: rgba(76, 175, 80, 0.77);
 }
 
-.warn{
-    color: rgb(234,22,72);
+.warn {
+    color: rgb(234, 22, 72);
+}
+
+.taskListEdit {
+    color: white;
+    font-size: 15px;
+}
+.taskListEdit:hover{
+    cursor: pointer;
+    -moz-box-shadow:0 0 10px #f4d4c5;
+    -webkit-box-shadow:0 0 10px #f4d4c5;
+    box-shadow:0 0 10px #f4d4c5;
 }
