@@ -68,7 +68,10 @@ export class AppComponent implements OnInit {
             this.tasks.push(task);
             this.currentTaskList.countTasks++;
             this.taskListService.createTask(task, this.currentTaskList.id)
-                .subscribe(data => this.changeTab(this.currentTaskList),
+                .subscribe(data =>
+                    {
+                        this.changeTab(this.currentTaskList)
+                    },
                     error => this.changeTab(this.currentTaskList)
                 );
         }
