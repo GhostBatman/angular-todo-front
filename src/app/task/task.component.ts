@@ -25,8 +25,7 @@ export class TaskComponent implements OnInit {
 
     public removeTask(task) {
         this.taskListService.removeTask(task.id) .subscribe(() => {
-            //this.changeTab(this.currentTaskList)
         });
-
+      delete this.task;
     }
 }

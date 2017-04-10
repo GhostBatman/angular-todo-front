@@ -32,15 +32,13 @@ export class CreateTaskComponent implements OnInit {
                 task_list_id: this.currentTaskList.id
             };
             this.newTaskText = '';
-            this.tasks.push(task);
+
             this.currentTaskList.countTasks++;
             this.taskListService.createTask(task, this.currentTaskList.id)
                 .subscribe(data => {
-                        //this.changeTab(this.currentTaskList)
-                    }
-                    //error => this.changeTab(this.currentTaskList)
-                );
+                    this.tasks.push(data.json()[0]);
+                });
         }
-    }
+    };
 
 }

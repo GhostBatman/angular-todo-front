@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TaskService} from './task.service';
 import 'rxjs/add/operator/map'
-import { TaskListHeaderComponent} from './task-list-header/task-list-header.component'
+import {TaskListHeaderComponent} from './task-list-header/task-list-header.component'
 
 
 @Component({
@@ -14,105 +14,21 @@ export class AppComponent implements OnInit {
     taskLists: any;
     tasks: any;
     title: any;
-    newTaskText: string;
     currentTaskList: any;
-    newTaskListText: string = '';
-    newTaskListName: string;
-    taskListEditStateOff: boolean = true;
 
 
-    constructor(private taskListService: TaskService) {
+    constructor() {
     }
-
 
     ngOnInit() {
-        this.taskListService.getTaskLists() .subscribe((data) => {
-            this.taskLists = data.json();
-            this.currentTaskList = this.taskLists[0];
-            this.changeTab(this.currentTaskList);
-        });
     }
 
-    public getTasksLists = () => {
-        this.taskListService.getTaskLists() .subscribe((data) => {
-            this.taskLists = data.json();
-            this.changeTab(this.currentTaskList);
-        });
-
-    };
-
-    public changeTab = (increased: any) => {
-        this.taskListService.getTasks(increased.id) .subscribe((data) => {
-            this.currentTaskList.className = '';
-            this.currentTaskList = increased;
-            this.tasks = data.json();
-            this.title = increased.name;
-            this.newTaskListName = this.currentTaskList.name;
-            this.currentTaskList.className = 'current-nav-bar-item';
-        });
-    };
-
-    public changeTaskCheckStatus = (task) => {
-        task.is_checked = !task.is_checked;
-        this.taskListService.updateTask(task) .subscribe(() => {
-        });
-
-    };
-
-    public createNewTask() {
-        if (this.newTaskText) {
-            let task = {
-                task_text: this.newTaskText,
-                is_checked: 0,
-                task_list_id: this.currentTaskList.id
-            };
-            this.newTaskText = '';
-            this.tasks.push(task);
-            this.currentTaskList.countTasks++;
-            this.taskListService.createTask(task, this.currentTaskList.id)
-                .subscribe(data =>
-                    {
-                        this.changeTab(this.currentTaskList)
-                    },
-                    error => this.changeTab(this.currentTaskList)
-                );
-        }
+    public taskChanged(tasks) {
+        this.tasks = tasks;
     }
 
-    public removeTask(task) {
-        this.taskListService.removeTask(task.id) .subscribe(() => {
-            this.changeTab(this.currentTaskList)
-        });
-
+    public currentTaskListChange(currentTaskList) {
+        this.currentTaskList = currentTaskList;
     }
 
-    public createNewTaskList() {
-        if (this.newTaskListText.trim()) {
-            this.taskListService.createTaskList(this.newTaskListText)
-                .subscribe(() => {
-                    this.newTaskListText = '';
-                    this.ngOnInit();
-                });
-        }
-
-
-    }
-
-    public renameTaskList() {
-        this.currentTaskList.name = this.newTaskListName;
-        this.title = this.newTaskListName;
-        this.taskListService.updateTaskList(this.currentTaskList)
-            .subscribe(() => {
-                this.newTaskListName = '';
-            });
-        this.taskListEdit()
-    }
-
-    public taskListEdit() {
-        if (this.taskListEditStateOff === true) {
-            this.taskListEditStateOff = false;
-        } else {
-            this.taskListEditStateOff = true;
-        }
-    }
 }

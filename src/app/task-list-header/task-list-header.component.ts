@@ -8,10 +8,10 @@ import {TaskService} from '../task.service';
     providers: [TaskService]
 })
 export class TaskListHeaderComponent implements OnInit {
-
+    taskListEditStateOff: boolean = true;
     @Input('currentTaskList') currentTaskList: any;
     newTaskListName: string;
-    taskListEditStateOff: boolean = true;
+
 
     constructor(private taskService: TaskService) {
     }
@@ -25,7 +25,7 @@ export class TaskListHeaderComponent implements OnInit {
 
     public renameTaskList() {
         this.currentTaskList.name = this.newTaskListName;
-       // this.title = this.newTaskListName;
+        // this.title = this.newTaskListName;
         this.taskService.updateTaskList(this.currentTaskList)
             .subscribe(() => {
                 this.newTaskListName = '';

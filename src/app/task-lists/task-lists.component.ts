@@ -8,37 +8,37 @@ import {TaskService} from '../task.service';
     providers: [TaskService]
 })
 export class TaskListsComponent implements OnInit {
-   @Input('taskLists') taskLists: any;
+    @Input('taskLists') taskLists: any;
     tasks: any;
-    title: any;
-    newTaskText: string;
     currentTaskList: any;
     newTaskListText: string = '';
     newTaskListName: string;
-    taskListEditStateOff: boolean = true;
-    @Output() changeTab = new EventEmitter<any>();
+    @Output() tasksChange = new EventEmitter<any>();
+    @Output() currentTaskListChange = new EventEmitter<any>();
 
-
-    changeTaskList(increased :any) {
-        this.changeTab.emit(increased );
-    }
 
     constructor(private taskListService: TaskService) {
     }
 
     ngOnInit() {
+        this.taskListService.getTaskLists() .subscribe((data) => {
+            this.taskLists = data.json();
+            this.currentTaskList = this.taskLists[0];
+            this.changeTab(this.currentTaskList);
+        });
     }
 
-   // public changeTab = (taskList) => {
-   //     this.taskListService.getTasks(taskList.id) .subscribe((data) => {
-   //         this.currentTaskList.className = '';
-   //         this.currentTaskList = taskList;
-   //         this.tasks = data.json();
-   //         this.title = taskList.name;
-   //         this.newTaskListName = this.currentTaskList.name;
-   //         this.currentTaskList.className = 'current-nav-bar-item';
-   //     });
-   // };
+    public changeTab = (taskList) => {
+        this.taskListService.getTasks(taskList.id) .subscribe((data) => {
+            this.currentTaskList.className = '';
+            this.currentTaskList = taskList;
+            this.tasks = data.json();
+            this.tasksChange.emit(this.tasks);
+            this.newTaskListName = this.currentTaskList.name;
+            this.currentTaskList.className = 'current-nav-bar-item';
+            this.currentTaskListChange.emit(this.currentTaskList);
+        });
+    };
 
     public createNewTaskList() {
         if (this.newTaskListText.trim()) {
