@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {TaskService} from './task.service';
 import 'rxjs/add/operator/map'
+import { TaskListHeaderComponent} from './task-list-header/task-list-header.component'
 
 
 @Component({
     selector: 'app-root',
-    providers: [TaskService],
+    providers: [TaskService, TaskListHeaderComponent],
     templateUrl: './app.component.html',
+
 })
 export class AppComponent implements OnInit {
     taskLists: any;
@@ -39,12 +41,12 @@ export class AppComponent implements OnInit {
 
     };
 
-    public changeTab = (taskList) => {
-        this.taskListService.getTasks(taskList.id) .subscribe((data) => {
+    public changeTab = (increased: any) => {
+        this.taskListService.getTasks(increased.id) .subscribe((data) => {
             this.currentTaskList.className = '';
-            this.currentTaskList = taskList;
+            this.currentTaskList = increased;
             this.tasks = data.json();
-            this.title = taskList.name;
+            this.title = increased.name;
             this.newTaskListName = this.currentTaskList.name;
             this.currentTaskList.className = 'current-nav-bar-item';
         });

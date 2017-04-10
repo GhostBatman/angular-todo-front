@@ -1,0 +1,14 @@
+<div class="custom-checkbox col-xs-2">
+  <input *ngIf="!task.is_checked" type="checkbox" (change)="changeTaskCheckStatus(task)">
+  <input *ngIf="task.is_checked" type="checkbox" (change)="changeTaskCheckStatus(task)" checked>
+</div>
+<div class="col-xs-8">
+  <h4 *ngIf="!task.is_checked">{{task.task_text}}</h4>
+  <h4 *ngIf="task.is_checked" style="text-decoration: line-through">{{task.task_text}}</h4>
+</div>
+<div class="col-xs-2">
+  <button (click)="removeTask(task)" class="btn btn-default" data-toggle="tooltip"
+          title="Delete task">
+    <span class="glyphicon glyphicon-trash warn"></span>
+  </button>
+</div>

@@ -1,0 +1,16 @@
+<div class="list-group">
+  <div *ngFor="let taskList of taskLists" class="list-group-item left-nav-bar-item {{taskList.className}}"
+       (click)="changeTaskList(taskList)">
+    <span class="badge progress-bar-danger">{{taskList.countTasks}}</span>
+    {{taskList.name}}
+  </div>
+  <div class="list-group-item ">
+    <div class="input-group">
+      <input (keydown.enter)="createNewTaskList()" type="text" placeholder="New task list"
+             [(ngModel)]="newTaskListText" class="form-control input-group">
+      <span class="input-group-btn">
+                    <input type="button" value="Add" (click)="createNewTaskList()" class="btn btn-default btn-custom ">
+                </span>
+    </div>
+  </div>
+</div>
