@@ -8,17 +8,14 @@ import {TaskService} from '../task.service';
     providers: [TaskService],
 })
 export class CreateTaskComponent implements OnInit {
-    taskLists: any;
+
     @Input('tasks') tasks: any;
+    @Input('currentTaskList') currentTaskList: any;
     title: any;
     newTaskText: string;
-    @Input('currentTaskList') currentTaskList: any;
-    newTaskListText: string = '';
-    newTaskListName: string;
-    taskListEditStateOff: boolean = true;
+    taskLists: any;
 
     constructor(private taskListService: TaskService) {
-
     }
 
     ngOnInit() {
