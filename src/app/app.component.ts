@@ -13,9 +13,8 @@ import {TaskListHeaderComponent} from './task-list-header/task-list-header.compo
 export class AppComponent implements OnInit {
     taskLists: any;
     tasks: any;
-    title: any;
     currentTaskList: any;
-
+    title: string;
 
     constructor() {
     }
@@ -27,8 +26,9 @@ export class AppComponent implements OnInit {
         this.tasks = tasks;
     }
 
-    public currentTaskListChange(currentTaskList) {
+    public currentTaskListChanged(currentTaskList) {
         this.currentTaskList = currentTaskList;
+        this.title = currentTaskList.name;
     }
 
 }

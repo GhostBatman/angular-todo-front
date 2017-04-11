@@ -1,1 +1,77 @@
-@import "../../styles.css";
+
+.header-custom {
+    margin: 15px;
+    border-radius: 2px;
+    background-color: rgb(38, 32, 58);
+    color: white;
+    margin-top: 0px;
+    font-size: 32px;
+    border-radius: 2px;
+    padding: 15px;
+
+}
+
+.panel-default {
+    border: none;
+}
+
+.panel-default > .panel-heading {
+    background-color: #ea1648;
+    color: white;
+}
+
+.panel-body {
+    padding-left: 8px;
+}
+
+.list-group-item {
+    background-color: rgb(38, 32, 58);
+    color: white;
+    font-family: "Roboto", "sans-serif";
+    margin-top: 0px;
+}
+
+.custom-checkbox {
+    width: 15px;
+    vertical-align: middle !important;
+}
+
+.left-nav-bar-item:hover {
+    cursor: pointer;
+    background-color: rgba(38, 32, 58, 0.73);
+}
+
+.current-nav-bar-item {
+    background-color: rgba(38, 32, 58, 0.73);
+}
+
+.edit-task-list-name:hover {
+    cursor: pointer;
+}
+
+.create-task-list {
+    padding-left: 0px !important;
+}
+
+.btn-custom {
+    color: #4caf50;
+}
+
+.btn-custom:hover {
+    color: rgba(76, 175, 80, 0.77);
+}
+
+.warn {
+    color: rgb(234, 22, 72);
+}
+
+.taskListEdit {
+    color: white;
+    font-size: 15px;
+}
+.taskListEdit:hover{
+    cursor: pointer;
+    -moz-box-shadow:0 0 10px #f4d4c5;
+    -webkit-box-shadow:0 0 10px #f4d4c5;
+    box-shadow:0 0 10px #f4d4c5;
+}

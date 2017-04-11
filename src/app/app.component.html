@@ -3,13 +3,13 @@
 </div>
 <div class="col-md-3 left-nav-bar">
     <app-task-lists [taskLists]="taskLists" (tasksChange)="taskChanged($event)"
-                    (currentTaskListChange)="currentTaskListChange($event)"></app-task-lists>
+                    (currentTaskListChange)="currentTaskListChanged($event)" ></app-task-lists>
 </div>
 
 <div class="col-md-9"><input type="hidden" [(ngModel)]="tasks">
     <div class="panel panel-default">
 
-        <app-task-list-header [currentTaskList]="currentTaskList"></app-task-list-header>
+        <app-task-list-header [currentTaskList]="currentTaskList" [title]="title"></app-task-list-header>
 
         <app-create-task [tasks]="tasks" [currentTaskList]="currentTaskList"></app-create-task>
 
