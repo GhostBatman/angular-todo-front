@@ -1,0 +1,16 @@
+<div class="panel-heading panel-heading-custom">
+    <h1 *ngIf="taskListEditStateOff">
+        {{title}}
+        <small>
+            <span (click)="taskListEdit()" class="taskListEdit">Edit</span>
+        </small>
+    </h1>
+    <div class="input-group col-xs-5" *ngIf="!taskListEditStateOff">
+        <input (keydown.enter)="renameTaskList()" type="text" class="form-control"
+               [(ngModel)]="newTaskListName">
+        <span class="input-group-btn">
+            <input type="button" class="btn btn-default btn-custom" value="Save" (click)="renameTaskList()">
+            <input type="button" class="btn btn-default warn" value="Cancel" (click)="taskListEdit()">
+        </span>
+    </div>
+</div>

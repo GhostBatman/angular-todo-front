@@ -1,0 +1,10 @@
+<div class="panel-body">
+  <div class="input-group col-md-9" *ngIf="tasks">
+    <input (keydown.enter)="createNewTask()" type="text" class="form-control"
+           placeholder="Here you can create a new task"
+           [(ngModel)]="newTaskText">
+    <span class="input-group-btn" *ngIf="tasks">
+                <input type="button" class="btn btn-default btn-custom" value="Create task" (click)="createNewTask()">
+            </span>
+  </div>
+</div>
